@@ -94,6 +94,7 @@
             border-radius: 10px;
             border: 2px solid #475569;
             margin-bottom: 15px;
+            display: none; /* يتم التحكم به عبر الجافاسكريبت عند توفر الصورة */
         }
 
         #location-title {
@@ -109,7 +110,7 @@
         }
 
         #default-msg {
-            margin-top: auto;
+            margin-top: 20px;
             color: #64748b;
             text-align: center;
             font-size: 0.9em;
@@ -174,7 +175,7 @@
         let map;
         let markers = [];
 
-        // 🟢 Complete Data List
+        // 🟢 قائمة البيانات الكاملة والنظيفة
         const locations = [
           {
             id: "spiker",
@@ -205,7 +206,7 @@
             name: "سنجار – جبل سنجار",
             coords: [36.3195, 41.8596],
             category: "affected",
-            image: "",
+            image: "ezidien.jpg",
             info: "رمز مأساة الإيزيديين، حيث حدثت عمليات الإبادة والتهجير القسري."
           },
           {
@@ -229,7 +230,7 @@
             name: "بغداد – المتنبي",
             coords: [33.3152, 44.3661],
             category: "hope",
-            image: "spiker.jpg",
+            image: "",
             info: "شارع المتنبي، رئة بغداد الثقافية ورمز الحياة الذي ينبض بالفن والأدب."
           },
           {
@@ -295,6 +296,7 @@
             });
         }
 
+        // 🛠️ دالة العرض الجانبي المحدثة لمعالجة الصور وفحصها بدقة
         function showInSidePanel(location) {
             document.getElementById('default-msg').style.display = 'none';
             
@@ -302,8 +304,16 @@
             container.style.display = 'block';
 
             const imgElement = document.getElementById('location-image');
-            imgElement.src = location.image;
-            imgElement.alt = location.name;
+            
+            // التحقق من أن حقل الصورة يحتوي على امتداد حقيقي وليس فارغاً
+            if (location.image && location.image.trim() !== "") {
+                imgElement.src = location.image;
+                imgElement.alt = location.name;
+                imgElement.style.display = "block"; // إظهار عنصر الصورة
+            } else {
+                imgElement.src = "";
+                imgElement.style.display = "none";  // إخفاء عنصر الصورة تماماً للمدن بدون صور كـ بغداد
+            }
             
             document.getElementById('location-title').innerText = location.name;
             document.getElementById('location-desc').innerText = location.info;
