@@ -147,19 +147,7 @@
     let map;
     let markers = [];
 
-    /*
-    ============================================================
-    كيف تضيف صورة؟
-    ------------------------------------------------------------
-    إذا الملفات عندك محلياً:
-      ضع الصورة بجانب index.html واكتب اسمها فقط: "anbar.jpg"
-
-    إذا الملفات على GitHub:
-      استخدم الرابط المباشر هكذا:
-      "https://raw.githubusercontent.com/USERNAME/REPO/main/anbar.jpg"
-      غيّر USERNAME و REPO باسم حسابك ومستودعك
-    ============================================================
-    */
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     const locations = [
         {
             name: "قاعدة سبايكر – تكريت",
@@ -282,7 +270,7 @@
             imgEl.onerror = function () {
                 imgEl.style.display = "none";
                 placeholder.style.display = "flex";
-                placeholder.textContent = "⚠️ تعذّر تحميل الصورة — تأكد من اسم الملف";
+                placeholder.textContent = "⚠️";
             };
 
             imgEl.src = "";
