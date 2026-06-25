@@ -249,20 +249,12 @@
             }
         });
     }
+          function showInSidePanel(location) {
 
-    function showInSidePanel(location) {
-        document.getElementById('default-msg').style.display = 'none';
-        const container   = document.getElementById('side-image-container');
-        const imgEl       = document.getElementById('location-image');
-        const placeholder = document.getElementById('no-image-placeholder');
+             console.log("Location:", location.name);
+             console.log("Image:", location.image);
 
-        container.style.display = 'block';
-
-        const hasImage = location.image && location.image.trim() !== "";
-
-        if (hasImage) {
-            imgEl.style.display = "block";
-            placeholder.style.display = "none";
+            document.getElementById('default-msg').style.display = 'none';
             imgEl.alt = location.name;
 
             imgEl.onerror = function () {
